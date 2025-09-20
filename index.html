@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christ University</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #800000;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #600000;
+            padding: 0.5rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        /* Login Page Styles */
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #800000;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #800000;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #600000;
+        }
+
+        /* Search Page Styles */
+        .search-box {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            padding: 0.8rem 1.5rem;
+            background: #800000;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .teacher-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .teacher-card-content {
+            padding: 1.5rem;
+        }
+
+        .teacher-card h3 {
+            margin-bottom: 0.5rem;
+            color: #800000;
+        }
+
+        .teacher-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Teacher Details Page */
+        .teacher-profile {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .teacher-image {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .teacher-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .teacher-info {
+            flex: 2;
+            padding: 2rem;
+        }
+
+        .teacher-info h2 {
+            color: #800000;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-info h3 {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .teacher-info p {
+            margin-bottom: 1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-item h4 {
+            color: #800000;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Bio Page */
+        .bio-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .bio-content h2 {
+            color: #800000;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #800000;
+            padding-bottom: 0.5rem;
+        }
+
+        .bio-section {
+            margin-bottom: 2rem;
+        }
+
+        .bio-section h3 {
+            color: #600000;
+            margin-bottom: 1rem;
+        }
+
+        .bio-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page">
+        <header>
+            <h1>Christ University</h1>
+        </header>
+        
+        <div class="container">
+            <div class="login-container">
+                <h2>Login to Faculty Portal</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Christ University. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Faculty Directory (hidden by default) -->
+    <div id="faculty-portal" class="hidden">
+        <header>
+            <h1>Christ University</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                    <li><a href="#" id="search-tab">Faculty Directory</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Search Page -->
+        <div id="search-page" class="container">
+            <h2>Faculty Directory</h2>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Search for faculty..." id="search-input">
+                <button id="search-btn">Search</button>
+            </div>
+            
+            <div class="teacher-grid" id="teacher-list">
+                <!-- Teacher cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Teacher Details Page -->
+        <div id="teacher-page" class="container hidden">
+            <div class="teacher-profile">
+                <div class="teacher-image">
+                    <img src="" alt="Teacher Image" id="teacher-img">
+                </div>
+                <div class="teacher-info">
+                    <h2 id="teacher-name">Dr. John Smith</h2>
+                    <h3 id="teacher-position">Professor, Department of Computer Science</h3>
+                    <p id="teacher-education">PhD in Computer Science, Stanford University</p>
+                    <p id="teacher-specialization">Specialization: Artificial Intelligence, Machine Learning</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <h4>Email</h4>
+                            <p id="teacher-email">john.smith@christuniversity.edu</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Phone</h4>
+                            <p id="teacher-phone">+91 9876543210</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Office</h4>
+                            <p id="teacher-office">Block A, Room 205</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Office Hours</h4>
+                            <p id="teacher-hours">Mon-Wed-Fri: 10:00 AM - 12:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" id="view-bio-btn">View Full Biography</button>
+                    <button class="btn" id="back-to-search-btn">Back to Directory</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bio Page -->
+        <div id="bio-page" class="container hidden">
+            <div class="bio-content">
+                <h2 id="bio-title">Biography of Dr. John Smith</h2>
+                
+                <div class="bio-section">
+                    <h3>Academic Background</h3>
+                    <p id="academic-bio">Dr. John Smith completed his PhD in Computer Science from Stanford University in 2010, specializing in Artificial Intelligence. Prior to that, he earned his Master's degree from the Massachusetts Institute of Technology (MIT) and his Bachelor's degree from the Indian Institute of Technology (IIT) Delhi.</p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Professional Experience</h3>
+                    <p id="professional-bio">With over 15 years of experience in academia, Dr. Smith has published numerous papers in top-tier conferences and journals. Before joining Christ University, he worked as a research scientist at Google AI and taught at the University of California, Berkeley.</p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Research Interests</h3>
+                    <p id="research-bio">Dr. Smith's research focuses on deep learning architectures, natural language processing, and computer vision. His recent work explores the ethical implications of AI systems and developing more interpretable machine learning models.</p>
+                </div>
+                
+                <button class="btn" id="back-to-teacher-btn">Back to Profile</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Christ University. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Teacher data with photos (using placeholder images from picsum.photos)
+        const teachers = [
+            {
+                id: 'john-smith',
+                name: 'Dr. John Smith',
+                position: 'Professor, Department of Computer Science',
+                education: 'PhD in Computer Science, Stanford University',
+                specialization: 'Specialization: Artificial Intelligence, Machine Learning',
+                email: 'john.smith@christuniversity.edu',
+                phone: '+91 9876543210',
+                office: 'Block A, Room 205',
+                hours: 'Mon-Wed-Fri: 10:00 AM - 12:00 PM',
+                photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Dr. John Smith completed his PhD in Computer Science from Stanford University in 2010, specializing in Artificial Intelligence. Prior to that, he earned his Master\'s degree from the Massachusetts Institute of Technology (MIT) and his Bachelor\'s degree from the Indian Institute of Technology (IIT) Delhi.',
+                professionalBio: 'With over 15 years of experience in academia, Dr. Smith has published numerous papers in top-tier conferences and journals. Before joining Christ University, he worked as a research scientist at Google AI and taught at the University of California, Berkeley.',
+                researchBio: 'Dr. Smith\'s research focuses on deep learning architectures, natural language processing, and computer vision. His recent work explores the ethical implications of AI systems and developing more interpretable machine learning models.'
+            },
+            {
+                id: 'sarah-johnson',
+                name: 'Dr. Sarah Johnson',
+                position: 'Associate Professor, Department of Mathematics',
+                education: 'PhD in Applied Mathematics, Cambridge University',
+                specialization: 'Specialization: Differential Equations, Mathematical Modeling',
+                email: 'sarah.johnson@christuniversity.edu',
+                phone: '+91 9876543211',
+                office: 'Block B, Room 112',
+                hours: 'Tue-Thu: 2:00 PM - 4:00 PM',
+                photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Dr. Sarah Johnson earned her PhD in Applied Mathematics from Cambridge University in 2012. She completed her Master\'s at ETH Zurich and her Bachelor\'s at the University of Melbourne.',
+                professionalBio: 'Dr. Johnson has been with Christ University since 2015. Previously, she worked as a quantitative analyst at Goldman Sachs and served as a visiting professor at the National University of Singapore.',
+                researchBio: 'Her research interests include nonlinear differential equations, mathematical modeling of biological systems, and numerical analysis. She has developed several novel approaches to solving complex PDEs in biological contexts.'
+            },
+            {
+                id: 'michael-brown',
+                name: 'Prof. Michael Brown',
+                position: 'Professor, Department of Physics',
+                education: 'PhD in Quantum Physics, MIT',
+                specialization: 'Specialization: Quantum Computing, Nanotechnology',
+                email: 'michael.brown@christuniversity.edu',
+                phone: '+91 9876543212',
+                office: 'Block C, Room 305',
+                hours: 'Mon-Fri: 9:00 AM - 11:00 AM',
+                photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Prof. Brown completed his PhD in Quantum Physics at MIT in 2008. He holds dual Master\'s degrees in Physics and Electrical Engineering from Caltech and a Bachelor\'s from the University of Chicago.',
+                professionalBio: 'Before joining Christ University in 2016, Prof. Brown led research teams at IBM Research and Bell Labs. He holds several patents in quantum device fabrication and has consulted for various tech startups.',
+                researchBio: 'His current research focuses on topological quantum computing, quantum error correction, and the development of novel quantum materials. He leads Christ University\'s Quantum Computing Initiative.'
+            },
+            {
+                id: 'emily-davis',
+                name: 'Dr. Emily Davis',
+                position: 'Associate Professor, Department of Chemistry',
+                education: 'PhD in Organic Chemistry, University of Oxford',
+                specialization: 'Specialization: Green Chemistry, Catalysis',
+                email: 'emily.davis@christuniversity.edu',
+                phone: '+91 9876543213',
+                office: 'Block D, Room 208',
+                hours: 'Wed-Fri: 1:00 PM - 3:00 PM',
+                photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Dr. Davis received her PhD in Organic Chemistry from the University of Oxford in 2011. She was a Rhodes Scholar and completed her undergraduate studies at Harvard University.',
+                professionalBio: 'Dr. Davis has been with Christ University since 2014. She previously worked as a research chemist at Pfizer and served on the scientific advisory board of several environmental NGOs.',
+                researchBio: 'Her research focuses on developing sustainable chemical processes, with particular emphasis on catalytic systems for green chemistry applications. She has developed several novel catalysts that significantly reduce waste in pharmaceutical synthesis.'
+            },
+            {
+                id: 'robert-wilson',
+                name: 'Prof. Robert Wilson',
+                position: 'Professor, Department of English',
+                education: 'PhD in Literature, Yale University',
+                specialization: 'Specialization: Postcolonial Literature, Modernist Studies',
+                email: 'robert.wilson@christuniversity.edu',
+                phone: '+91 9876543214',
+                office: 'Block E, Room 101',
+                hours: 'Mon-Thu: 11:00 AM - 1:00 PM',
+                photo: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Prof. Wilson earned his PhD in Literature from Yale University in 2009. He holds a Master\'s from the University of Edinburgh and a Bachelor\'s from the University of Toronto.',
+                professionalBio: 'Before joining Christ University in 2013, Prof. Wilson taught at Columbia University and was a visiting scholar at the University of London. He has served on the editorial boards of several literary journals.',
+                researchBio: 'His research examines the intersections of postcolonial theory and modernist literature, with particular focus on South Asian writing in English. His recent work explores the globalization of literary modernism.'
+            },
+            {
+                id: 'priya-sharma',
+                name: 'Dr. Priya Sharma',
+                position: 'Associate Professor, Department of Biotechnology',
+                education: 'PhD in Molecular Biology, Indian Institute of Science',
+                specialization: 'Specialization: Genetic Engineering, Bioinformatics',
+                email: 'priya.sharma@christuniversity.edu',
+                phone: '+91 9876543215',
+                office: 'Block F, Room 315',
+                hours: 'Tue-Fri: 10:00 AM - 12:00 PM',
+                photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Dr. Sharma completed her PhD in Molecular Biology from the Indian Institute of Science in 2015. She holds a Master\'s degree from the University of Delhi and was a postdoctoral fellow at the Max Planck Institute.',
+                professionalBio: 'Dr. Sharma joined Christ University in 2018 after working as a research scientist at Biocon. She has received several young investigator awards for her work in genetic engineering.',
+                researchBio: 'Her research focuses on CRISPR-based genome editing technologies and computational approaches to analyze large-scale genomic data. She leads a team developing novel gene therapies for genetic disorders.'
+            },
+            {
+                id: 'david-rodriguez',
+                name: 'Dr. David Rodriguez',
+                position: 'Professor, Department of Economics',
+                education: 'PhD in Economics, London School of Economics',
+                specialization: 'Specialization: Development Economics, Behavioral Economics',
+                email: 'david.rodriguez@christuniversity.edu',
+                phone: '+91 9876543216',
+                office: 'Block G, Room 210',
+                hours: 'Mon-Wed: 2:00 PM - 4:00 PM',
+                photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Dr. Rodriguez earned his PhD from the London School of Economics in 2007. He completed his undergraduate studies at the University of Barcelona and was a Fulbright Scholar at Harvard University.',
+                professionalBio: 'Before joining Christ University in 2012, Dr. Rodriguez worked as an economist at the World Bank and consulted for the United Nations Development Programme. He serves on several economic policy advisory boards.',
+                researchBio: 'His research examines poverty alleviation strategies, with particular focus on microfinance interventions and behavioral approaches to economic development. His recent work explores the impact of digital financial services in rural India.'
+            },
+            {
+                id: 'ananya-patil',
+                name: 'Dr. Ananya Patil',
+                position: 'Assistant Professor, Department of Psychology',
+                education: 'PhD in Clinical Psychology, National Institute of Mental Health and Neurosciences',
+                specialization: 'Specialization: Cognitive Neuroscience, Mental Health',
+                email: 'ananya.patil@christuniversity.edu',
+                phone: '+91 9876543217',
+                office: 'Block H, Room 107',
+                hours: 'Mon-Tue-Thu: 3:00 PM - 5:00 PM',
+                photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Dr. Patil completed her PhD in Clinical Psychology from NIMHANS in 2018. She was a visiting scholar at Johns Hopkins University and holds a Master\'s degree from the University of Mumbai.',
+                professionalBio: 'Dr. Patil joined Christ University in 2019 after completing her clinical residency at the All India Institute of Medical Sciences. She maintains a small private practice specializing in adolescent mental health.',
+                researchBio: 'Her research focuses on the neural correlates of decision-making and the development of cognitive behavioral therapies for anxiety disorders. She leads several studies on mindfulness-based interventions for college students.'
+            },
+            {
+                id: 'rajesh-kumar',
+                name: 'Prof. Rajesh Kumar',
+                position: 'Professor, Department of Commerce',
+                education: 'PhD in Business Administration, University of Pennsylvania',
+                specialization: 'Specialization: Financial Accounting, Corporate Governance',
+                email: 'rajesh.kumar@christuniversity.edu',
+                phone: '+91 9876543218',
+                office: 'Block I, Room 302',
+                hours: 'Wed-Fri: 9:00 AM - 11:00 AM',
+                photo: 'https://images.unsplash.com/photo-1546820389-44d77e1f3b31?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Prof. Kumar earned his PhD from the Wharton School at the University of Pennsylvania in 2005. He holds an MBA from IIM Ahmedabad and is a Chartered Accountant.',
+                professionalBio: 'Before joining Christ University in 2010, Prof. Kumar worked as a senior consultant at PricewaterhouseCoopers and served on the board of several publicly traded companies.',
+                researchBio: 'His research examines corporate governance mechanisms and their impact on financial reporting quality. His recent work focuses on ESG (Environmental, Social, and Governance) disclosures in emerging markets.'
+            },
+            {
+                id: 'meera-nair',
+                name: 'Dr. Meera Nair',
+                position: 'Associate Professor, Department of History',
+                education: 'PhD in Ancient History, Jawaharlal Nehru University',
+                specialization: 'Specialization: Medieval India, Maritime History',
+                email: 'meera.nair@christuniversity.edu',
+                phone: '+91 9876543219',
+                office: 'Block J, Room 115',
+                hours: 'Mon-Tue-Thu: 10:00 AM - 12:00 PM',
+                photo: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=500&auto=format&fit=crop&q=60',
+                academicBio: 'Dr. Nair completed her PhD in Ancient History from JNU in 2013. She was a Commonwealth Scholar at the University of Oxford and holds a Master\'s degree from the University of Delhi.',
+                professionalBio: 'Dr. Nair joined Christ University in 2015 after working as a researcher at the Indian Council of Historical Research. She has curated several museum exhibitions on Indian maritime heritage.',
+                researchBio: 'Her research focuses on trade networks in medieval South Asia and the Indian Ocean world. Her recent work examines the role of women in pre-colonial mercantile communities.'
+            }
+        ];
+
+        // DOM elements
+        const loginPage = document.getElementById('login-page');
+        const facultyPortal = document.getElementById('faculty-portal');
+        const loginForm = document.getElementById('login-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const searchTab = document.getElementById('search-tab');
+        const searchPage = document.getElementById('search-page');
+        const teacherPage = document.getElementById('teacher-page');
+        const bioPage = document.getElementById('bio-page');
+        const teacherList = document.getElementById('teacher-list');
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+        const backToSearchBtn = document.getElementById('back-to-search-btn');
+        const viewBioBtn = document.getElementById('view-bio-btn');
+        const backToTeacherBtn = document.getElementById('back-to-teacher-btn');
+        const teacherImg = document.getElementById('teacher-img');
+
+        // Current teacher being viewed
+        let currentTeacher = null;
+
+        // Initialize the page
+        function init() {
+            // Render teacher cards
+            renderTeacherCards(teachers);
+            
+            // Event listeners
+            loginForm.addEventListener('submit', handleLogin);
+            logoutBtn.addEventListener('click', handleLogout);
+            searchTab.addEventListener('click', showSearchPage);
+            searchBtn.addEventListener('click', handleSearch);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') handleSearch();
+            });
+            backToSearchBtn.addEventListener('click', showSearchPage);
+            viewBioBtn.addEventListener('click', showBioPage);
+            backToTeacherBtn.addEventListener('click', showTeacherPage);
+        }
+
+        // Handle login
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation (in a real app, this would check with a server)
+            if (username && password) {
+                // Hide login page, show faculty portal
+                loginPage.classList.add('hidden');
+                facultyPortal.classList.remove('hidden');
+                showSearchPage();
+            } else {
+                alert('Please enter both username and password');
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            // Clear form
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            
+            // Show login page, hide faculty portal
+            facultyPortal.classList.add('hidden');
+            loginPage.classList.remove('hidden');
+        }
+
+        // Render teacher cards
+        function renderTeacherCards(teachersToRender) {
+            teacherList.innerHTML = '';
+            
+            teachersToRender.forEach(teacher => {
+                const card = document.createElement('div');
+                card.className = 'teacher-card';
+                card.innerHTML = `
+                    <img src="${teacher.photo}" alt="${teacher.name}">
+                    <div class="teacher-card-content">
+                        <h3>${teacher.name}</h3>
+                        <p>${teacher.position}</p>
+                        <button class="btn" data-id="${teacher.id}">View Profile</button>
+                    </div>
+                `;
+                teacherList.appendChild(card);
+                
+                // Add click event to the button
+                card.querySelector('button').addEventListener('click', () => {
+                    showTeacherProfile(teacher.id);
+                });
+            });
+        }
+
+        // Show teacher profile
+        function showTeacherProfile(teacherId) {
+            currentTeacher = teachers.find(t => t.id === teacherId);
+            
+            if (currentTeacher) {
+                // Update teacher info
+                document.getElementById('teacher-name').textContent = currentTeacher.name;
+                document.getElementById('teacher-position').textContent = currentTeacher.position;
+                document.getElementById('teacher-education').textContent = currentTeacher.education;
+                document.getElementById('teacher-specialization').textContent = currentTeacher.specialization;
+                document.getElementById('teacher-email').textContent = currentTeacher.email;
+                document.getElementById('teacher-phone').textContent = currentTeacher.phone;
+                document.getElementById('teacher-office').textContent = currentTeacher.office;
+                document.getElementById('teacher-hours').textContent = currentTeacher.hours;
+                teacherImg.src = currentTeacher.photo;
+                teacherImg.alt = currentTeacher.name;
+                
+                // Update bio page
+                document.getElementById('bio-title').textContent = `Biography of ${currentTeacher.name}`;
+                document.getElementById('academic-bio').textContent = currentTeacher.academicBio;
+                document.getElementById('professional-bio').textContent = currentTeacher.professionalBio;
+                document.getElementById('research-bio').textContent = currentTeacher.researchBio;
+                
+                showTeacherPage();
+            }
+        }
+
+        // Handle search
+        function handleSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            if (searchTerm) {
+                const filteredTeachers = teachers.filter(teacher => 
+                    teacher.name.toLowerCase().includes(searchTerm) ||
+                    teacher.position.toLowerCase().includes(searchTerm) ||
+                    teacher.specialization.toLowerCase().includes(searchTerm)
+                );
+                renderTeacherCards(filteredTeachers);
+            } else {
+                renderTeacherCards(teachers);
+            }
+        }
+
+        // Show search page
+        function showSearchPage(e) {
+            if (e) e.preventDefault();
+            searchPage.classList.remove('hidden');
+            teacherPage.classList.add('hidden');
+            bioPage.classList.add('hidden');
+        }
+
+        // Show teacher page
+        function showTeacherPage() {
+            searchPage.classList.add('hidden');
+            teacherPage.classList.remove('hidden');
+            bioPage.classList.add('hidden');
+        }
+
+        // Show bio page
+        function showBioPage() {
+            searchPage.classList.add('hidden');
+            teacherPage.classList.add('hidden');
+            bioPage.classList.remove('hidden');
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>
